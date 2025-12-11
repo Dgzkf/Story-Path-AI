@@ -33,7 +33,7 @@ if "messages" not in st.session_state:
     
 if "chat_session" not in st.session_state:
     model = genai.GenerativeModel(
-        model_name="gemini-pro", # Или "gemini-1.5-pro" за по-високо качество
+        model_name="gemini-1.5-flash", # Или "gemini-1.5-pro" за по-високо качество
         system_instruction=SYSTEM_PROMPT,
         generation_config={"temperature": 1.0}
     )
@@ -65,4 +65,5 @@ if prompt := st.chat_input("Твоят избор..."):
             except Exception as e:
 
                 st.error(f"Възникна грешка: {e}")
+
 
