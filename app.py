@@ -3,6 +3,46 @@ import google.generativeai as genai
 
 # 1. КОНФИГУРАЦИЯ
 st.set_page_config(page_title="Хроникьорът на Световете", page_icon="📖")
+# --- CSS СТИЛИЗАЦИЯ ЗА КНИГА-ИГРА ---
+st.markdown("""
+<style>
+    /* 1. Импортиране на шрифт като от пишеща машина или стара книга */
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Courier+Prime&display=swap');
+
+    /* 2. Промяна на основния фон (леко кремав/пергаментен цвят) */
+    .stApp {
+        background-color: #f4e9d5;
+        color: #2b2b2b; /* Тъмно сив текст за по-добър контраст */
+    }
+
+    /* 3. Промяна на шрифтовете на заглавията */
+    h1, h2, h3 {
+        font-family: 'Cormorant Garamond', serif !important;
+        color: #4a0404 !important; /* Тъмно кърваво червено за заглавията */
+    }
+
+    /* 4. Промяна на основния текст (да изглежда като напечатан или книжен) */
+    p, .stMarkdown {
+        font-family: 'Courier Prime', monospace !important; /* Или 'Cormorant Garamond' за по-романтичен вид */
+        font-size: 18px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* 5. Стилизиране на чат балончетата */
+    .stChatMessage {
+        background-color: rgba(255, 255, 255, 0.5); /* Полупрозрачен бял фон */
+        border: 1px solid #d4c5a9;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    
+    /* 6. Скриване на логото на Streamlit и менюто (за по-чист вид) */
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+
+</style>
+""", unsafe_allow_html=True)
 st.title("📖 Хроникьорът на Световете")
 st.caption("Захранвано от Gemini 2.5 Flash")
 
@@ -116,3 +156,4 @@ if prompt := st.chat_input("Твоят ход..."):
                 st.session_state.messages.append({"role": "assistant", "content": response.text})
             except Exception as e:
                 st.error(f"Възникна грешка: {e}")
+
